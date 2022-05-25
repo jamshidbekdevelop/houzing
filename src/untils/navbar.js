@@ -1,12 +1,14 @@
 import React from "react";
-import Generic from "../components/Generic";
+import Generic from "../pages/Generic";
+import HomePage from "../pages/Home";
+
 
 export const navbar = [
   {
     id: 1,
     title: "Home",
     path: "/home",
-    Element: Generic,
+    Element: <HomePage/>,
     search: "?",
     hidden: false,
     private: false,
@@ -15,7 +17,7 @@ export const navbar = [
     id: 2,
     title: "Properties",
     path: "/properties",
-    Element: Generic,
+    Element: <Generic/>,
     search: "?",
     hidden: false,
     private: false,
@@ -24,7 +26,7 @@ export const navbar = [
     id: 3,
     title: "Contacts",
     path: "/contacts",
-    Element: Generic,
+    Element: <Generic/>,
     search: "?",
     hidden: false,
     private: false,
@@ -33,7 +35,7 @@ export const navbar = [
     id: 4,
     title: "SignIn",
     path: "/signin",
-    Element: Generic,
+    Element: <Generic/>,
     search: "?",
     hidden: true,
     private: false,
@@ -42,7 +44,7 @@ export const navbar = [
     id: 5,
     title: "SignUn",
     path: "/signun",
-    Element: Generic,
+    Element: <Generic/>,
     search: "?",
     hidden: true,
     private: false,

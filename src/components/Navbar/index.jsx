@@ -9,6 +9,7 @@ import {
 } from "./styled";
 import { Outlet, NavLink, useNavigate } from "react-router-dom";
 import { navbar } from "../../untils/navbar";
+import Button from "../Generic/Button";
 const Navbar = () => {
   const navigate = useNavigate();
   return (
@@ -16,6 +17,7 @@ const Navbar = () => {
       <Container>
         <NavbarWrapper>
           <Logo onClick={() => navigate("/home")}>
+            <Logo.Icon />
             <Logo.Title>Houzing</Logo.Title>
           </Logo>
           <NavbarBody>
@@ -30,10 +32,13 @@ const Navbar = () => {
             })}
           </NavbarBody>
           <Logo width={"120px"}>
-            <button>Signin</button>
+            <Button width={120} height={44}>
+              Signin
+            </Button>
           </Logo>
         </NavbarWrapper>
       </Container>
+        <Outlet />
     </Wrapper>
   );
 };

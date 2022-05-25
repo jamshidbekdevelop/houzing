@@ -1,9 +1,2 @@
-import React from 'react'
-
-function Generic() {
-  return (
-    <div>Generic</div>
-  )
-}
-
-export default Generic
+export {default as Button} from './Button'
+export {default as Input} from './Input'
