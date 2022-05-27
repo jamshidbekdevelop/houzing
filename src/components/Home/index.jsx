@@ -1,8 +1,19 @@
 import React from "react";
 import Filter from "../Filter";
+import Card from "../Generic/Card";
+import CardCarusel from "./CardCarusel";
+import Carusel from "./Carusel";
+import { Container } from "./styled";
 
 const Home = () => {
-  return <Filter />;
+  return (
+    <Container>
+      <Filter />
+      <Carusel />
+      <CardCarusel/>
+      <Card/>
+    </Container>
+  );
 };
 
 export default Home;
