@@ -2,7 +2,7 @@ import React from "react";
 import Card from "../../Generic/Card";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { Box, Container, responsive } from "./styled";
+import { Container, responsive } from "./styled";
 const CardCarusel = () => {
   return (
     <Container>
@@ -30,27 +30,6 @@ const CardCarusel = () => {
           <Card/>
           <Card/>
           <Card/>
-        {/* <Box>
-          <Card />
-        </Box>
-        <Box>
-          <Card />
-        </Box>
-        <Box>
-          <Card />
-        </Box>
-        <Box>
-          <Card />
-        </Box>
-        <Box>
-          <Card />
-        </Box>
-        <Box>
-          <Card />
-        </Box>
-        <Box>
-          <Card />
-        </Box> */}
       </Carousel>
     </Container>
   );

@@ -1,27 +1,5 @@
-import { type } from "@testing-library/user-event/dist/type";
 import styled from "styled-components";
 
-// const Gettype = (type) => {
-//   switch (type) {
-//     case "secondary":
-//       return {
-//         border: "1px solid #e6e9ec",
-//         color: "#0D263B",
-//       };
-//     case "primary":
-//       return {
-//         background: "#0061DF",
-//         color: "#FFFFFF",
-//         border: "none",
-//       };
-
-//     default:
-//       return {
-//         border: "1px solid #E6E9Ec",
-//         color: "#FFFFFF",
-//       };
-//   }
-// };
 
 export const Input = styled.input`
   display: flex;

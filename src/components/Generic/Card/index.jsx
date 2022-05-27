@@ -1,4 +1,3 @@
-import { IconMap } from "antd/lib/result";
 import React from "react";
 import noimg from '../../../assets/images/apartment1.jpg'
 import nouser from '../../../assets/images/avatar1.png'

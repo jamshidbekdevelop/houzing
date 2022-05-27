@@ -2,7 +2,6 @@ import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { navbar } from "../untils/navbar";
-import { Container } from "./styled";
 const Root = () => {
   return (
     <Routes>
