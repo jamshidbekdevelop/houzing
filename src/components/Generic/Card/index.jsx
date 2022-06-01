@@ -6,7 +6,7 @@ import { Container, Icons, Image, Info, InfoWrapper, Price, User } from "./style
 const Card = ({ info, mr, ml, margin }) => {
   return (
     <Container mr={mr} ml={ml} margin={margin}>
-      <Image src={info?.attachments[0].imgPath || noimg} />
+      <Image src={ info?.attachments[0]?.imgPath || noimg} />
       <InfoWrapper>
           <User>
               <User.Img src={ info?.user || nouser}/>

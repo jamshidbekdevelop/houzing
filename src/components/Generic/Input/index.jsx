@@ -13,6 +13,8 @@ const Inputt = ({
   placeholder,
   onChange,
   pl,
+  name,
+  value,
 }) => {
   return (
     <Container
@@ -25,7 +27,13 @@ const Inputt = ({
       mb={mb}
     >
       <Logo>{children}</Logo>
-      <Input placeholder={placeholder} onChange={onChange} onClick={onClick} />
+      <Input
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+        onClick={onClick}
+        name={name}
+      />
     </Container>
   );
 };

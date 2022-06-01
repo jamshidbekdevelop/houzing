@@ -9,13 +9,13 @@ export const Container = styled.div`
   display: flex;
   overflow: hidden;
   flex-direction: column;
-  width: 100%;
   min-width: 250px;
-  max-width: 380px;
+  max-width: 400px;
+  width: 100%;
   height: 450px;
   background: #ffffff;
-  margin: ${({ margin }) => `${margin}px` && " 0 1em"};
-  margin-bottom: 10px;
+  /* margin: ${({ margin }) => `${margin}px` && " 0 1em"}; */
+  margin-bottom: 20px;
   border: 1px solid #e6e9ec;
   border-radius: 3px;
   :hover {

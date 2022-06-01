@@ -16,8 +16,8 @@ const Carusel = () => {
   const slider = useRef();
   return (
     <CaruselWrapper>
-      <Icon.Left onClick={() => slider.current?.next()} />
-      <Icon.Right onClick={() => slider.current?.prev()} />
+      <Icon.Left onClick={() => slider.current?.prev()} />
+      <Icon.Right onClick={() => slider.current?.next()} />
       <MainCarusel ref={slider} dots autoplay>
         <Box>
           <Img src={img1} />

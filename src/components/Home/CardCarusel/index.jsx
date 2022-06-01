@@ -1,37 +1,45 @@
-import React from "react";
-import Card from "../../Generic/Card";
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
-import { Container, responsive } from "./styled";
+import React,{useState} from 'react'
+import ReactDOM from "react-dom";
+import Carousel from "react-elastic-carousel";
+import Card from '../../Generic/Card';
+import Item from "./Item";
+import "./styles.css";
 const CardCarusel = () => {
+    const breakPoints = [
+        { width: 1, itemsToShow: 1 },
+        { width: 520, itemsToShow: 2, itemsToScroll: 2 },
+        { width: 770, itemsToShow: 3 },
+        // { width: 1200, itemsToShow: 4 }
+      ];
+      const [items, setItems] = useState([1, 2, 3, 4, 5, 6, 7, 8]);
+      // const addItem = () => {
+      //   const nextItem = Math.max(1, items.length + 1);
+      //   setItems([...items, nextItem]);
+      // };
+    
+      // const removeItem = () => {
+      //   const endRange = Math.max(0, items.length - 1);
+      //   setItems(items.slice(0, endRange));
+      // };
   return (
-    <Container>
-      <Carousel
-        additionalTransfrom={10}
-        autoPlay
-        autoPlaySpeed={3500}
-        centerMode={false}
-        containerClass="container-with-dots"
-        draggable
-        focusOnSelect={false}
-        infinite
-        itemClass="carousel-item-padding-40-px"
-        customTransition="all 3s"
-        keyBoardControl
-        minimumTouchDrag={100}
-        renderButtonGroupOutside={false}
-        renderDotsOutside={false}
-        responsive={responsive}
-      >
-          <Card/>
-          <Card/>
-          <Card/>
-          <Card/>
-          <Card/>
-          <Card/>
-      </Carousel>
-    </Container>
-  );
-};
+    <div className="arr">
+      <div className="title">Recommended</div>
+      <div className="text">Nulla quis curabitur velit volutpat auctor bibendum consectetur sit.</div>
+      <div className="controls-wrapper">
 
-export default CardCarusel;
+        {/* <button onClick={removeItem}>Remove Item</button>
+        <button onClick={addItem}>Add Item</button> */}
+      </div>
+      {/* <hr className="seperator" /> */}
+      <div className="carousel-wrapper">
+        <Carousel breakPoints={breakPoints}>
+          {items.map((item) => (
+            <Item key={item}><Card/></Item>
+          ))}
+        </Carousel>
+      </div>
+    </div>
+  )
+}
+
+export default CardCarusel
