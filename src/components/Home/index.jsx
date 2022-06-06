@@ -1,4 +1,5 @@
 import React from "react";
+import Category from "../Category";
 import Filter from "../Filter";
 import Card from "../Generic/Card";
 import CardCarusel from "./CardCarusel/index";
@@ -11,7 +12,7 @@ const Home = () => {
       <Filter />
       <Carusel />
       <CardCarusel/>
-      <Card/>
+      <Category/>
     </Container>
   );
 };

@@ -4,12 +4,32 @@ import { Advenced, Container, Icon, Section } from "./styled";
 import { Popover } from "antd";
 import UseReplace from "../../hooks/useReplace";
 import { useNavigate } from "react-router-dom";
+import { useQuery } from "react-query";
+const { REACT_APP_BASE_URL: url } = process.env;
+
 const Filter = () => {
   const navigate = useNavigate();
   const onChange = ({ target }) => {
     const { value, name } = target;
     navigate(`${UseReplace(name, value)}`);
   };
+  const box = useQuery(
+    "getHomeList",
+    () =>
+      fetch(`${url}/v1/categories/list`, {
+        method: "get",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }).then((res) => res.json()),
+
+    {
+      onSuccess: (res) => {
+        console.log(res.data, "res");
+      },
+    }
+  );
+  // console.log(box?.data?.data?.map((val)=>val?.name), "data");
   const advancedSearch = (
     <Advenced>
       <Advenced.Title>Address</Advenced.Title>
@@ -69,6 +89,11 @@ const Filter = () => {
           placeholder="Max price"
           name="max_price"
         />
+        <select name="" id="">
+          {box?.data?.data?.map((val) => (
+            <option key={val?.id} value={val?.name}>{val?.name}</option>
+          ))}
+        </select>
       </Section>
       <Section>
         <Button width={131} height={40} ml={20} type={"primary"}>
