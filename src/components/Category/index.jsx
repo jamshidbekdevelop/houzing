@@ -23,9 +23,10 @@ const Category = () => {
           // return <PropertyCard  title={value} />;
         });
         setState(list);
+        console.log(list, 'list');
       },
       // refetchOnWindowFocus: false,
-    }
+    }  
   );
   const onSelect = (value) => {
     console.log(value, "on select");
@@ -48,9 +49,9 @@ const Category = () => {
       <div className="controls-wrapper"></div>
       <div className="carousel-wrapper">
         <Carousel breakPoints={breakPoints}>
-          {state.map((val) => (
-            <Item key={val?.id}>
-              <PropertyCard onClick={()=>onSelect(val?.id)} title={val?.name} />
+          {state.map((val, index) => (
+            <Item key={index+1}>
+              <PropertyCard onClick={()=>onSelect(index+1)} title={val} />
             </Item>
           ))}
         </Carousel>

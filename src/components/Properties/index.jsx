@@ -4,12 +4,14 @@ import { useQuery } from "react-query";
 import Filter from "../Filter";
 import { Body, Container, Text, Wrapper } from "./styled";
 import Card from "../Generic/Card";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import useSearch from "../../hooks/useSearch";
 
 const { REACT_APP_BASE_URL: url } = process.env;
 
 const Properties = () => {
+  const navigate = useNavigate();
+
   const [title, setTitle] = useState("Properties");
   const [data, setData] = useState([]);
   const { search } = useLocation();
@@ -29,25 +31,31 @@ const Properties = () => {
       },
     }
   );
+  const onSelect = (id) => {
+    navigate(`/properties/:${id}`);
+  };
   useQuery(
     "getHomeList",
-    () =>
-      // query.get("category_id") &&
-      fetch(`${url}/v1/categories/${query.get("category_id")}`, {
-        // fetch(`${url}/v1/categories/1`, {
-        method: "get",
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      }).then((res) => res.json()),
-
+    () => {
+      return (
+        query.get("category_id") &&
+        fetch(`${url}/v1/categories/${query.get("category_id")}`, {
+          // fetch(`${url}/v1/categories/1`, {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }).then((res) => res.json())
+      );
+    },
     {
       onSuccess: (res) => {
-        console.log(res?.data?.name, "res");
-        query.get("category_id") && setTitle(res?.data?.name || "Properties");
+        console.log(res?.data, "res");
+        setTitle(res?.data?.name || "Properties");
       },
     }
   );
+
   return (
     <Container>
       <Filter />
@@ -59,7 +67,7 @@ const Properties = () => {
       </Wrapper>
       <Body>
         {data?.map((value) => {
-          return <Card key={value.id} info={value} />;
+          return <Card onClick={() => onSelect(value?.id)} key={value.id} info={value} />;
         })}
       </Body>
     </Container>

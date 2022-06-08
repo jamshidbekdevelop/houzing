@@ -1,35 +1,58 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Input } from "../Generic";
-import { Advenced, Container, Icon, Section } from "./styled";
+import { Advenced, Container, Icon, Section, Select } from "./styled";
 import { Popover } from "antd";
 import UseReplace from "../../hooks/useReplace";
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "react-query";
+import useSearch from "../../hooks/useSearch";
 const { REACT_APP_BASE_URL: url } = process.env;
 
 const Filter = () => {
+  const query = useSearch();
   const navigate = useNavigate();
+  const [box, setBox] = useState([]);
+  // useQuery(
+  //   "getHomeList",
+  //   () =>
+  //   fetch(`${url}/v1/categories/list`, {
+  //       method: "get",
+  //       headers: {
+  //         Authorization: `Bearer ${localStorage.getItem("token")}`,
+  //       },
+  //     }).then((res) => res.json()),
+
+  //     {
+  //       onSuccess: (res) => {
+  //         console.log(res.data, "res");
+  //       },
+  //     }
+  //     );
+  useQuery(
+    "",
+    () => {
+      return fetch(`${url}/v1/categories`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }).then((res) => res.json());
+    },
+    {
+      onSuccess: (res) => {
+        console.log(res?.data);
+        setBox(res?.data || []);
+      },
+    }
+  );
   const onChange = ({ target }) => {
     const { value, name } = target;
     navigate(`${UseReplace(name, value)}`);
   };
-  const box = useQuery(
-    "getHomeList",
-    () =>
-      fetch(`${url}/v1/categories/list`, {
-        method: "get",
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      }).then((res) => res.json()),
-
-    {
-      onSuccess: (res) => {
-        console.log(res.data, "res");
-      },
-    }
-  );
+  console.log(box, "dsf");
   // console.log(box?.data?.data?.map((val)=>val?.name), "data");
+  const onSelect = ({ target }) => {
+    navigate(`${UseReplace("category_id", target?.value)}`);
+  };
   const advancedSearch = (
     <Advenced>
       <Advenced.Title>Address</Advenced.Title>
@@ -89,11 +112,13 @@ const Filter = () => {
           placeholder="Max price"
           name="max_price"
         />
-        <select name="" id="">
-          {box?.data?.data?.map((val) => (
-            <option key={val?.id} value={val?.name}>{val?.name}</option>
+        <Select defaultValue={query.get('category_id')} onChange={onSelect} name="" id="">
+          {box?.map((val) => (
+            <option key={val} value={val}>
+              {val}
+            </option>
           ))}
-        </select>
+        </Select>
       </Section>
       <Section>
         <Button width={131} height={40} ml={20} type={"primary"}>

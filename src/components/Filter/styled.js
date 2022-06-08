@@ -26,24 +26,29 @@ Icon.Searchs = styled(search)`
   height: 16px;
 `;
 
-export const Advenced=styled.div`
-width: fit-content;
-height: fit-content;
-background: #ffffff;
-border-radius: 5px;
-padding: 10px;
-`
-Advenced.Title=styled.div`
-font-family: 'Montserrat';
-font-style: normal;
-font-weight: 600;
-font-size: 16px;
-line-height: 24px;
-color: #0d263b;
-`
-export const Section=styled.div`
-display: flex;
-margin-bottom: 15px;
-justify-content: flex-end;
-gap: 20px;
-`
+export const Advenced = styled.div`
+  width: fit-content;
+  height: fit-content;
+  background: #ffffff;
+  border-radius: 5px;
+  padding: 10px;
+`;
+Advenced.Title = styled.div`
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #0d263b;
+`;
+export const Section = styled.div`
+  display: flex;
+  margin-bottom: 15px;
+  justify-content: flex-end;
+  gap: 20px;
+`;
+
+export const Select = styled.select`
+  width: 300px;
+  height: 44px;
+`;

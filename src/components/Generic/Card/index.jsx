@@ -11,9 +11,9 @@ import {
   User,
 } from "./styled";
 
-const Card = ({ info, mr, ml, margin }) => {
+const Card = ({ info, mr, ml, margin, onClick }) => {
   return (
-    <Container mr={mr} ml={ml} margin={margin}>
+    <Container mr={mr} ml={ml} margin={margin} onClick={onClick}>
       <Image src={info?.attachments[0]?.imgPath || noimg} />
       <InfoWrapper>
         <User>
