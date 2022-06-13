@@ -4,7 +4,7 @@ import { Advenced, Container, Icon, Section, Select } from "./styled";
 import { Popover } from "antd";
 import UseReplace from "../../hooks/useReplace";
 import { useNavigate } from "react-router-dom";
-import { useQuery } from "react-query";
+import { useMutation, useQuery } from "react-query";
 import useSearch from "../../hooks/useSearch";
 const { REACT_APP_BASE_URL: url } = process.env;
 
@@ -12,43 +12,40 @@ const Filter = () => {
   const query = useSearch();
   const navigate = useNavigate();
   const [box, setBox] = useState([]);
-  // useQuery(
-  //   "getHomeList",
-  //   () =>
-  //   fetch(`${url}/v1/categories/list`, {
-  //       method: "get",
-  //       headers: {
-  //         Authorization: `Bearer ${localStorage.getItem("token")}`,
-  //       },
-  //     }).then((res) => res.json()),
-
-  //     {
-  //       onSuccess: (res) => {
-  //         console.log(res.data, "res");
-  //       },
-  //     }
-  //     );
   useQuery(
-    "",
-    () => {
-      return fetch(`${url}/v1/categories`, {
+    "getHomeList",
+    () =>
+      fetch(`${url}/v1/categories/list`, {
+        method: "get",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
-      }).then((res) => res.json());
-    },
+      }).then((res) => res.json()),
+
     {
       onSuccess: (res) => {
-        console.log(res?.data);
+        console.log(res?.data, "resBox");
         setBox(res?.data || []);
       },
     }
   );
+// const {mutation}=useMutation(
+//   "getHomeList",
+//     () =>
+//       fetch(`${url}/v1/categories/list`, {
+//         method: "get",
+//         headers: {
+//           Authorization: `Bearer ${localStorage.getItem("token")}`,
+//         },
+//       }).then((res) => res.json()),
+// )
+
   const onChange = ({ target }) => {
     const { value, name } = target;
     navigate(`${UseReplace(name, value)}`);
   };
   console.log(box, "dsf");
+
   // console.log(box?.data?.data?.map((val)=>val?.name), "data");
   const onSelect = ({ target }) => {
     navigate(`${UseReplace("category_id", target?.value)}`);
@@ -112,10 +109,15 @@ const Filter = () => {
           placeholder="Max price"
           name="max_price"
         />
-        <Select defaultValue={query.get('category_id')} onChange={onSelect} name="" id="">
+        <Select
+          defaultValue={query.get("category_id")}
+          onChange={onSelect}
+          name=""
+          id=""
+        >
           {box?.map((val) => (
-            <option key={val} value={val}>
-              {val}
+            <option key={val?.id} value={val?.id}>
+              {val?.name}
             </option>
           ))}
         </Select>

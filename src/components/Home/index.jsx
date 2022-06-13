@@ -7,6 +7,9 @@ import Carusel from "./Carusel";
 import { Container } from "./styled";
 
 const Home = () => {
+  let url = new URL(window?.location?.href)
+
+  console.log(url?.searchParams);
   return (
     <Container>
       <Filter />

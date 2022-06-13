@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { useQuery } from "react-query";
 import Filter from "../Filter";
@@ -17,25 +17,14 @@ const Properties = () => {
   const { search } = useLocation();
   const query = useSearch();
   // console.log(query.get("category_id"));
-  useQuery(
-    ["getHomeList", [search]],
-    () => {
-      return fetch(`${url}/v1/houses/list${search || "?"}`).then((res) =>
-        res.json()
-      );
-    },
-    {
-      onSuccess: (res) => {
-        // console.log(res.data, "res");
-        setData(res?.data || []);
-      },
+
+  useEffect(() => {
+    if (!query.get("category_id")) {
+      setTitle("Properties");
     }
-  );
-  const onSelect = (id) => {
-    navigate(`/properties/:${id}`);
-  };
+  },[query.get("category_id")]);
   useQuery(
-    "getHomeList",
+    "getHomeListdd",
     () => {
       return (
         query.get("category_id") &&
@@ -50,12 +39,29 @@ const Properties = () => {
     },
     {
       onSuccess: (res) => {
-        console.log(res?.data, "res");
-        setTitle(res?.data?.name || "Properties");
+        console.log(res?.data?.name, "resfd");
+        query.get("category_id")&& setTitle(res?.data?.name || "Properties");
       },
     }
   );
-
+  useQuery(
+    ["getHomeList", [search]],
+    () => {
+      return fetch(`${url}/v1/houses/list${search || "?"}`).then((res) =>
+        res.json()
+      );
+    },
+    {
+      onSuccess: (res) => {
+        // console.log(res?.data.map((val)=>val.category.name), "reslist");
+        setData(res?.data || []);
+      },
+    }
+  );
+  const onSelect = (id) => {
+    console.log(id, "id");
+    navigate(`/properties/:${id}`);
+  };
   return (
     <Container>
       <Filter />
@@ -67,7 +73,13 @@ const Properties = () => {
       </Wrapper>
       <Body>
         {data?.map((value) => {
-          return <Card onClick={() => onSelect(value?.id)} key={value.id} info={value} />;
+          return (
+            <Card
+              onClick={() => onSelect(value?.id)}
+              key={value.id}
+              info={value}
+            />
+          );
         })}
       </Body>
     </Container>

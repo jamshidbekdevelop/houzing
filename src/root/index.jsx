@@ -21,7 +21,14 @@ const Root = () => {
             }
             )}
         </Route>
+        {/* <Route element={<Navbar />}>
+            {navbar.map(({id, hidden, path, element, useParams}) => {
+                return hidden &&  <Route key={id} path={path} element={element} />
+            }
+            )}
+        </Route> */}
         <Route path='*' element={<h1>Not Found</h1>} />
+        {/* <Route path='/signin' element={<h1>Not Found</h1>} /> */}
       </Routes>
   );
 };

@@ -5,14 +5,14 @@ import "./styles.css";
 import { useQuery } from "react-query";
 import PropertyCard from "../Generic/PropertyCard";
 import { useNavigate } from "react-router-dom";
-import UseReplace from '../../hooks/useReplace'
+import UseReplace from "../../hooks/useReplace";
 const { REACT_APP_BASE_URL: url } = process.env;
 const Category = () => {
   const [state, setState] = useState([]);
-  const navigate= useNavigate()
-  // useRepl
-  useQuery(
-    "",
+  const navigate = useNavigate();
+
+  const { isLoading, error, data }=useQuery(
+    ["getData"],
     () => {
       return fetch(`${url}/v1/categories/list`).then((res) => res.json());
     },
@@ -20,19 +20,18 @@ const Category = () => {
       onSuccess: (res) => {
         let list = res?.data?.map((value) => {
           return value;
-          // return <PropertyCard  title={value} />;
         });
         setState(list);
-        console.log(list, 'list');
+        console.log(list, "list");
       },
-      // refetchOnWindowFocus: false,
-    }  
+      refetchOnWindowFocus: false,
+    }
   );
   const onSelect = (value) => {
     console.log(value, "on select");
-    navigate(`/properties?category_id=${value}`)
+    navigate(`/properties?category_id=${value}`);
   };
-  // console.log(state, "state"); 
+  console.log(state, "state");
 
   const breakPoints = [
     { width: 1, itemsToShow: 1 },
@@ -49,9 +48,12 @@ const Category = () => {
       <div className="controls-wrapper"></div>
       <div className="carousel-wrapper">
         <Carousel breakPoints={breakPoints}>
-          {state.map((val, index) => (
-            <Item key={index+1}>
-              <PropertyCard onClick={()=>onSelect(index+1)} title={val} />
+          {state.map((val) => (
+            <Item key={val?.id}>
+              <PropertyCard
+                onClick={() => onSelect(val?.id)}
+                title={val?.name}
+              />
             </Item>
           ))}
         </Carousel>

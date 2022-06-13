@@ -10,8 +10,11 @@ import {
 import { Outlet, NavLink, useNavigate } from "react-router-dom";
 import { navbar } from "../../untils/navbar";
 import Button from "../Generic/Button";
+import { useLocation } from "react-router-dom";
 const Navbar = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  console.log(location, "loca");
   return (
     <Wrapper>
       <Container>
@@ -31,14 +34,18 @@ const Navbar = () => {
               );
             })}
           </NavbarBody>
-          <Logo width={"120px"}>
-            <Button width={120} height={44}>
-              Signin
-            </Button>
-          </Logo>
+          {location?.pathname !== "/signin" ? (
+            <Logo width={"120px"}>
+              <Button width={120} height={44}>
+                <NavLink to={"/signin"}>Signin</NavLink>
+              </Button>
+            </Logo>
+          ) : (
+            ""
+          )}
         </NavbarWrapper>
       </Container>
-        <Outlet />
+      <Outlet />
     </Wrapper>
   );
 };

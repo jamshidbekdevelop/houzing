@@ -10,7 +10,7 @@ export const Container = styled.div`
   overflow: hidden;
   flex-direction: column;
   min-width: 250px;
-  max-width: 400px;
+  max-width: 381px;
   width: 100%;
   height: 450px;
   background: #ffffff;
