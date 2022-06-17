@@ -4,6 +4,9 @@ import HomePage from "../pages/Home";
 import PropertiesPage from "../pages/Properties";
 import SelectedHouse from '../components/SelectedHouse'
 import SignIning from "../pages/SignIn";
+import Profile from "../components/Profile";
+import Register from '../pages/Register'
+
 
 export const navbar = [
   {
@@ -47,7 +50,7 @@ export const navbar = [
       id: 5,
       title: 'Register',
       path: '/register',
-      element: <Generic />,
+      element: <Register />,
       search: '?',
       hidden: true,
       useParams: true,
@@ -56,9 +59,10 @@ export const navbar = [
   {
       id: 6,
       title: 'Favourite',
-      path: '/favourite',
-      element: <Generic />,
+      path: '/properties/profile',
+      element: <Profile />,
       search: '?',
+      useParams: true,
       hidden: true,
       private: false,
   },

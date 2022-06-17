@@ -1,7 +1,7 @@
 import React from "react";
 import Category from "../Category";
+import Choose from "../Choose";
 import Filter from "../Filter";
-import Card from "../Generic/Card";
 import CardCarusel from "./CardCarusel/index";
 import Carusel from "./Carusel";
 import { Container } from "./styled";
@@ -15,6 +15,7 @@ const Home = () => {
       <Filter />
       <Carusel />
       <CardCarusel/>
+      <Choose/>
       <Category/>
     </Container>
   );

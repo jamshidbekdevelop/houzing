@@ -12,6 +12,7 @@ const Filter = () => {
   const query = useSearch();
   const navigate = useNavigate();
   const [box, setBox] = useState([]);
+  console.log();
   useQuery(
     "getHomeList",
     () =>
@@ -29,16 +30,17 @@ const Filter = () => {
       },
     }
   );
-// const {mutation}=useMutation(
-//   "getHomeList",
-//     () =>
-//       fetch(`${url}/v1/categories/list`, {
-//         method: "get",
-//         headers: {
-//           Authorization: `Bearer ${localStorage.getItem("token")}`,
-//         },
-//       }).then((res) => res.json()),
-// )
+
+  // const {mutation}=useMutation(
+  //   "getHomeList",
+  //     () =>
+  //       fetch(`${url}/v1/categories/list`, {
+  //         method: "get",
+  //         headers: {
+  //           Authorization: `Bearer ${localStorage.getItem("token")}`,
+  //         },
+  //       }).then((res) => res.json()),
+  // )
 
   const onChange = ({ target }) => {
     const { value, name } = target;
@@ -139,7 +141,7 @@ const Filter = () => {
         <Icon />
       </Input>
       <Popover placement="bottomRight" content={advancedSearch} trigger="click">
-        <Button height={40} width={131} type={"secondary"}>
+        <Button height={40} width={180} type={"secondary"}>
           <Icon.Setting />
           Advanced
         </Button>
