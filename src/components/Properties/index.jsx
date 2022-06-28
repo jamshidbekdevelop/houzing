@@ -12,7 +12,7 @@ const { REACT_APP_BASE_URL: url } = process.env;
 const Properties = () => {
   const navigate = useNavigate();
 
-  const [title, setTitle] = useState("Properties");
+  const [title, setTitle] = useState('');
   const [data, setData] = useState([]);
   const { search } = useLocation();
   const query = useSearch();
@@ -39,7 +39,7 @@ const Properties = () => {
     },
     {
       onSuccess: (res) => {
-        console.log(res?.data?.name, "resfd");
+        console.log(res?.data, "resfd");
         query.get("category_id")&& setTitle(res?.data?.name || "Properties");
       },
     }
@@ -76,7 +76,7 @@ const Properties = () => {
           return (
             <Card
               onClick={() => onSelect(value?.id)}
-              key={value.id}
+              key={value?.id}
               info={value}
             />
           );

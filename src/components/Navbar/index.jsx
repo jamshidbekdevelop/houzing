@@ -3,10 +3,13 @@ import {
   activeStyle,
   Container,
   Logo,
+  LogoTitle,
+  MobileIcon,
   NavbarBody,
   NavbarWrapper,
   Wrapper,
 } from "./styled";
+import { FaBars } from "react-icons/fa";
 import { Outlet, NavLink, useNavigate } from "react-router-dom";
 import { navbar } from "../../untils/navbar";
 import Button from "../Generic/Button";
@@ -37,10 +40,13 @@ const Navbar = () => {
     <Wrapper>
       <Container>
         <NavbarWrapper>
-          <Logo onClick={() => navigate("/home")}>
+          <LogoTitle onClick={() => navigate("/home")}>
             <Logo.Icon />
             <Logo.Title>Houzing</Logo.Title>
-          </Logo>
+          </LogoTitle>
+          <MobileIcon onClick={()=>navigate('/sidebar')}>
+            <FaBars />
+          </MobileIcon>
           <NavbarBody>
             {navbar.map((value) => {
               return (

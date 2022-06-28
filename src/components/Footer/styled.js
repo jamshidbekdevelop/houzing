@@ -21,24 +21,39 @@ const Container = styled.div`
 `;
 
 const Wrapper = styled.div`
-  width: 1440px;
-  padding: 48px 130px 24px 130px;
+  width: 1280px;
+  display: flex;
+  gap: 200px;
+  justify-content: space-between;
+  @media (max-width: 1280px) {
+    width: 100%;
+    gap: 0px;
+    flex-direction: column;
+    padding:0 150px;
+  }
+  @media (max-width: 770px) {
+    padding: 0;
+  }
+`;
+const Div = styled.div`
   display: flex;
   justify-content: space-between;
-  @media (max-width: 768px) {
+  width: 100%;
+  @media (max-width: 770px) {
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     width: 100%;
-    padding: 40px 0 20px 0;
+    padding: 40px 0 20px 70px;
   }
 `;
 
 Wrapper.Column = styled.div`
-  @media (max-width: 768px) {
+  @media (max-width: 770px) {
+    padding: 0;
     margin-bottom: 40px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
   }
 `;
 
@@ -55,7 +70,7 @@ const Title = styled.div`
   line-height: 24px;
   color: #ffffff;
   margin-bottom: 32px;
-  @media (max-width: 768px) {
+  @media (max-width: 770px) {
     font-size: 17px;
   }
 `;
@@ -63,7 +78,7 @@ const Title = styled.div`
 const Section = styled.div`
   display: flex;
   margin-bottom: 20px;
-  @media (max-width: 768px) {
+  @media (max-width: 770px) {
     width: 100%;
     font-size: 13px;
     display: flex;
@@ -78,7 +93,7 @@ const Description = styled.div`
   line-height: 20px;
   color: #ffffff;
   max-width: 300px;
-  @media (max-width: 768px) {
+  @media (max-width: 770px) {
     font-size: 13px;
     max-width: 250px;
   }
@@ -91,7 +106,7 @@ const Socials = styled.div`
   align-items: center;
   gap: 37px;
   margin-top: 42px;
-  @media (max-width: 768px) {
+  @media (max-width: 770px) {
     margin-top: 20px;
   }
 `;
@@ -105,7 +120,7 @@ Icons.Location = styled(location)`
   :active {
     transform: scale(0.98);
   }
-  @media (max-width: 768px) {
+  @media (max-width: 770px) {
     width: 17px;
     height: 17px;
     margin-right: 18px;
@@ -118,7 +133,7 @@ Icons.Call = styled(call)`
   :active {
     transform: scale(0.98);
   }
-  @media (max-width: 768px) {
+  @media (max-width: 770px) {
     width: 17px;
     height: 17px;
     margin-right: 18px;
@@ -131,7 +146,7 @@ Icons.Email = styled(email)`
   :active {
     transform: scale(0.98);
   }
-  @media (max-width: 768px) {
+  @media (max-width: 770px) {
     width: 17px;
     height: 17px;
     margin-right: 18px;
@@ -191,7 +206,7 @@ const Bottom = styled.div`
   width: 100%;
   padding: 16px 0;
   border-top: 1px solid rgba(255, 255, 255, 0.15);
-  @media (max-width: 768px) {
+  @media (max-width: 770px) {
     flex-direction: column;
     align-items: center;
     height: 148px;
@@ -207,7 +222,7 @@ Bottom.Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  @media (max-width: 768px) {
+  @media (max-width: 770px) {
     flex-direction: column;
     align-items: center;
     height: 148px;
@@ -223,7 +238,7 @@ Bottom.Wrapper = styled.div`
 
 const Logo = styled(logo)`
   margin-right: 12px;
-  @media (max-width: 768px) {
+  @media (max-width: 770px) {
     width: 25px;
     height: 25px;
     margin-right: 6px;
@@ -235,7 +250,7 @@ const LogoTitle = styled.div`
   font-size: 20px;
   font-weight: 500;
   color: white;
-  @media (max-width: 768px) {
+  @media (max-width: 770px) {
     font-size: 19px;
   }
 `;
@@ -246,7 +261,7 @@ const BottomDesctiption = styled.div`
   font-size: 14px;
   line-height: 20px;
   color: #ffffff;
-  @media (max-width: 768px) {
+  @media (max-width: 770px) {
     font-size: 13px;
   }
 `;
@@ -267,7 +282,7 @@ const Top = styled(BackTop)`
   :active {
     opacity: 0.8;
   }
-  @media (max-width: 768px) {
+  @media (max-width: 770px) {
     width: 35px;
     height: 35px;
     position: absolute;
@@ -291,4 +306,5 @@ export {
   Logo,
   LogoTitle,
   BottomDesctiption,
+  Div,
 };

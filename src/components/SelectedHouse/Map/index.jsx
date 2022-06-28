@@ -12,8 +12,7 @@ export const Map = () => {
     const { id } = useParams();
 
     useQuery(
-        'get data', 
-        () => {
+        'get data', () => {
             return fetch(`${url}/v1/houses/${id.replace(':', '')}`, {
                 method: 'GET',
                 headers: {

@@ -10,12 +10,11 @@ export const Body = styled.div`
   margin-top: 48px;
 `;
 export const Container = styled.div`
-margin: auto;
+  margin: auto;
   display: flex;
   flex-direction: column;
-  width: 1440px;
+  max-width: 1280px;
   align-items: center;
-  height: 343px;
   padding: 48px 0px;
   box-sizing: border-box;
 `;
@@ -25,13 +24,8 @@ export const Title = styled.div`
   font-weight: 600;
   font-size: ${({ size }) => (size ? `${size}px` : "28px")};
   line-height: 36px;
-  /* identical to box height, or 129% */
-
   text-align: center;
   letter-spacing: -0.02em;
-
-  /* text/1 */
-
   color: #0d263b;
 `;
 export const Text = styled.div`
@@ -40,12 +34,7 @@ export const Text = styled.div`
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  /* or 150% */
-
   text-align: center;
-
-  /* Text / Color */
-
   color: #696969;
 `;
 export const Icons = styled.img`
@@ -54,20 +43,36 @@ export const Icons = styled.img`
 `;
 export const Box = styled.div`
   height: 230px;
-  width: 250px;
+  max-width: 250px;
+  min-width: 230px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
+`;
+export const Div = styled.div`
+  display: flex;
+  max-width: 770px;
+  width: 100%;
+  justify-content: space-around;
+  @media (max-width: 770px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 export const BoxContainer = styled.div`
   display: flex;
-  width: 1200px;
+  max-width: 1280px;
+  width: 100%;
   justify-content: space-between;
+  box-sizing: border-box;
+  @media (max-width: 1280px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
-export const Massege=styled(message)``
-export const Home=styled(home)``
-export const Ring=styled(ring)``
-export const Map=styled(map)``
+export const Massege = styled(message)``;
+export const Home = styled(home)``;
+export const Ring = styled(ring)``;
+export const Map = styled(map)``;

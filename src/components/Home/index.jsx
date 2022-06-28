@@ -7,16 +7,16 @@ import Carusel from "./Carusel";
 import { Container } from "./styled";
 
 const Home = () => {
-  let url = new URL(window?.location?.href)
+  let url = new URL(window?.location?.href);
 
   console.log(url?.searchParams);
   return (
     <Container>
       <Filter />
       <Carusel />
-      <CardCarusel/>
-      <Choose/>
-      <Category/>
+      <CardCarusel />
+      <Choose />
+      <Category/> 
     </Container>
   );
 };

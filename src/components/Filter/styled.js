@@ -4,9 +4,9 @@ import { ReactComponent as setting } from "../../assets/icons/setting-lines.svg"
 import { ReactComponent as search } from "../../assets/icons/search-icon.svg";
 export const Container = styled.div`
   display: flex;
-  max-width: 1440px;
+  max-width: 1280px;
   width: 100%;
-  padding: 0 130px;
+  /* padding: 0 130px; */
   gap: 20px;
   margin: auto;
   height: 64px;
@@ -32,6 +32,9 @@ export const Advenced = styled.div`
   background: #ffffff;
   border-radius: 5px;
   padding: 10px;
+  @media screen and (max-width: 770px) {
+    padding: 0px;
+  }
 `;
 Advenced.Title = styled.div`
   font-family: "Montserrat";

@@ -4,6 +4,7 @@ import {
   BottomDesctiption,
   Container,
   Description,
+  Div,
   Icons,
   Logo,
   LogoTitle,
@@ -18,91 +19,95 @@ export const Footer = () => {
   return (
     <Container>
       <Wrapper>
-        <Wrapper.Column>
-          <Title>Contact Us</Title>
-          <Section>
-            <Icons.Location />
-            <Description>
-              329 Queensberry Street, North Melbourne VIC 3051, Australia.
-            </Description>
-          </Section>
-          <Section>
-            <Icons.Call />
-            <Description>123 456 7890.</Description>
-          </Section>
-          <Section>
-            <Icons.Email />
-            <Description>support@houzing.com.</Description>
-          </Section>
-          <Socials>
-            <Icons.Wrapper>
-              <Icons.Facebook />
-            </Icons.Wrapper>
-            <Icons.Wrapper>
-              <Icons.Twitter />
-            </Icons.Wrapper>
-            <Icons.Wrapper>
-              <Icons.Instagram />
-            </Icons.Wrapper>
-            <Icons.Wrapper>
-              <Icons.Linkedin />
-            </Icons.Wrapper>
-          </Socials>
-        </Wrapper.Column>
-        <Wrapper.Column>
-          <Title>Discover</Title>
-          <Section>
-            <Description>Chicago</Description>
-          </Section>
+        <Div>
+          <Wrapper.Column>
+            <Title>Contact Us</Title>
+            <Section>
+              <Icons.Location />
+              <Description>
+                329 Queensberry Street, North Melbourne VIC 3051, Australia.
+              </Description>
+            </Section>
+            <Section>
+              <Icons.Call />
+              <Description>123 456 7890.</Description>
+            </Section>
+            <Section>
+              <Icons.Email />
+              <Description>support@houzing.com.</Description>
+            </Section>
+            <Socials>
+              <Icons.Wrapper>
+                <Icons.Facebook />
+              </Icons.Wrapper>
+              <Icons.Wrapper>
+                <Icons.Twitter />
+              </Icons.Wrapper>
+              <Icons.Wrapper>
+                <Icons.Instagram />
+              </Icons.Wrapper>
+              <Icons.Wrapper>
+                <Icons.Linkedin />
+              </Icons.Wrapper>
+            </Socials>
+          </Wrapper.Column>
+          <Wrapper.Column>
+            <Title>Discover</Title>
+            <Section>
+              <Description>Chicago</Description>
+            </Section>
 
-          <Section>
-            <Description>Los Angeles</Description>
-          </Section>
+            <Section>
+              <Description>Los Angeles</Description>
+            </Section>
 
-          <Section>
-            <Description>Miami</Description>
-          </Section>
+            <Section>
+              <Description>Miami</Description>
+            </Section>
 
-          <Section>
-            <Description>New York</Description>
-          </Section>
-        </Wrapper.Column>
-        <Wrapper.Column>
-          <Title>Lists by Category</Title>
-          <Section>
-            <Description>Apartments</Description>
-          </Section>
-          <Section>
-            <Description>Condos</Description>
-          </Section>
-          <Section>
-            <Description>Houses</Description>
-          </Section>
-          <Section>
-            <Description>Offices</Description>
-          </Section>
-          <Section>
-            <Description>Retail</Description>
-          </Section>
-          <Section>
-            <Description>Villas</Description>
-          </Section>
-        </Wrapper.Column>
-        <Wrapper.Column>
-          <Title>Lists by Category</Title>
-          <Section>
-            <Description>About Us</Description>
-          </Section>
-          <Section>
-            <Description>Terms & Conditions</Description>
-          </Section>
-          <Section>
-            <Description>Support Center</Description>
-          </Section>
-          <Section>
-            <Description>Contact Us</Description>
-          </Section>
-        </Wrapper.Column>
+            <Section>
+              <Description>New York</Description>
+            </Section>
+          </Wrapper.Column>
+        </Div>
+        <Div>
+          <Wrapper.Column>
+            <Title>Lists by Category</Title>
+            <Section>
+              <Description>Apartments</Description>
+            </Section>
+            <Section>
+              <Description>Condos</Description>
+            </Section>
+            <Section>
+              <Description>Houses</Description>
+            </Section>
+            <Section>
+              <Description>Offices</Description>
+            </Section>
+            <Section>
+              <Description>Retail</Description>
+            </Section>
+            <Section>
+              <Description>Villas</Description>
+            </Section>
+          </Wrapper.Column>
+          <Wrapper.Column>
+            <Title>Lists by Category</Title>
+            <Section>
+              <Description>About Us</Description>
+            </Section>
+            <Section>
+              <Description>Terms & Conditions</Description>
+            </Section>
+            <Section>
+              <Description>Support Center</Description>
+            </Section>
+            <Section>
+              <Description>Contact Us</Description>
+            </Section>
+          </Wrapper.Column>
+        </Div>
       </Wrapper>
       <Bottom>
         <Bottom.Container>

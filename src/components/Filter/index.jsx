@@ -12,7 +12,6 @@ const Filter = () => {
   const query = useSearch();
   const navigate = useNavigate();
   const [box, setBox] = useState([]);
-  console.log();
   useQuery(
     "getHomeList",
     () =>

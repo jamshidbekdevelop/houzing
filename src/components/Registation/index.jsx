@@ -22,7 +22,7 @@ const Register = () => {
         firstname,
         lastname,
         password,
-        roleIdSet: [0],
+        roleIdSet: [1],
       }),
     }).then((res) => res.json());
   });

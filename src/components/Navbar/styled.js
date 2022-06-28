@@ -24,7 +24,7 @@ export const activeStyle = ({ isActive }) => {
 export const NavbarWrapper = styled.div`
   display: flex;
   height: 64px;
-  max-width: 1440px;
+  max-width: 1280px;
   font-family: "Montserrat";
   font-style: normal;
   font-weight: 400;
@@ -32,12 +32,37 @@ export const NavbarWrapper = styled.div`
   line-height: 24px;
   width: 100%;
   color: #ffffff;
-  padding: 0 130px;
 `;
+export const MobileIcon = styled.div`
+  display: none;
+  @media screen and (max-width: 770px) {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(-100%, 60%);
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #fff;
+  }
+`;
+export const LogoTitle=styled.div`
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  @media screen and (max-width: 770px) {
+    margin-left: 30px;
+  }
+`
 export const Logo = styled.div`
   display: flex;
   align-items: center;
   cursor: pointer;
+  
+
+  @media screen and (max-width: 770px) {
+    display: none;
+  }
 `;
 Logo.Title = styled("div")`
   margin-left: 11px;
@@ -54,4 +79,7 @@ export const NavbarBody = styled.div`
   align-items: center;
   justify-content: center;
   color: white;
+  @media screen and (max-width: 770px) {
+    display: none;
+  }
 `;

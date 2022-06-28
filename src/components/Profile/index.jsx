@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import { useMutation, useQuery } from "react-query";
-
+import { useNavigate } from "react-router-dom";
+import { Button as BT } from "../Generic";
 import {
   Bottom,
   Box,
   Btn,
+  But,
   Button,
+  Buttons,
   Container,
-  Delate,
+  Edit,
+  Flex,
   Group,
   Image,
   LeftArrow,
@@ -21,15 +25,16 @@ import {
 const { REACT_APP_BASE_URL: url } = process.env;
 
 const Favorites = () => {
+  const navigate = useNavigate();
   let pattern = null;
   const [page, setPage] = useState(1);
   const [data, setData] = useState([]);
   console.log(data, "data");
-  useQuery(
+  const { refetch } = useQuery(
     "getHomeList",
     () =>
       fetch(`${url}/v1/houses/me`, {
-        method: "get",
+        method: "GET",
         headers: {
           "Content-Type": "Application/json",
           Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -45,7 +50,7 @@ const Favorites = () => {
   );
   const [countriesPerPage] = useState(3);
   const value = page;
-  const range = Math.ceil(data.length / countriesPerPage);
+  const range = Math.ceil(data?.length / countriesPerPage);
   switch (true) {
     case range < 7:
       pattern = [...new Array(range)].map((_, i) => i + 1);
@@ -61,7 +66,7 @@ const Favorites = () => {
   }
   const lastPageIndex = page * countriesPerPage;
   const firstPageIndex = lastPageIndex - countriesPerPage;
-  const currentPageIndex = data.slice(firstPageIndex, lastPageIndex);
+  const currentPageIndex = data?.slice(firstPageIndex, lastPageIndex);
   const changeNumber = (n) => {
     if (typeof n === "number" && n > 0 && n <= range) {
       setPage(n);
@@ -69,7 +74,7 @@ const Favorites = () => {
   };
   console.log(currentPageIndex, "currentPageIndex");
   console.log(
-    currentPageIndex.map((val) => val?.attachments[0]),
+    currentPageIndex?.map((val) => val?.attachments[0]),
     "dsds"
   );
   const { mutate } = useMutation(({ id }) => {
@@ -88,6 +93,7 @@ const Favorites = () => {
       {
         onSuccess: (res) => {
           console.log(res, "deleted");
+          refetch();
         },
       }
     );
@@ -96,12 +102,21 @@ const Favorites = () => {
     <Group>
       <Container>
         <Top>
-          <Title size={30}>Favorites</Title>
-          <Title color={"#696969"}>Ready to jump back in?</Title>
+          <Flex>
+            <Title size={30}>My Proporties</Title>
+            <BT
+              onClick={() => navigate("/profile/add")}
+              height={44}
+              width={180}
+              type={"primary"}
+            >
+              Add Propory
+            </BT>
+          </Flex>
         </Top>
         <Bottom>
           <div>
-            {currentPageIndex.map(
+            {currentPageIndex?.map(
               ({
                 id,
                 attachments,
@@ -134,9 +149,15 @@ const Favorites = () => {
                       {salePrice}
                     </Title>
                   </TitleDiv>
-                  <Delate>
-                    <Trash onClick={() => onDelete('')} /> {/* id berib yuborish kk */}
-                  </Delate>
+                  <But>
+                    <Buttons>
+                      <Edit onClick={() => navigate(`/profile/add/${id}`)} />
+                    </Buttons>
+                    <Buttons>
+                      <Trash onClick={() => onDelete(id)} />
+                      {/* {/* id berib yuborish kk  */}
+                    </Buttons>
+                  </But>
                 </Box>
               )
             )}
@@ -145,9 +166,9 @@ const Favorites = () => {
             <Btn disabled={value <= 1} onClick={() => changeNumber(value - 1)}>
               <LeftArrow />
             </Btn>
-            {pattern.map((label) => (
+            {pattern?.map((label) => (
               <Btn key={label} onClick={() => changeNumber(label)}>
-                {label}
+                {label >= 0 ? label : 0}
               </Btn>
             ))}
             <Btn

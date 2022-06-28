@@ -1,11 +1,19 @@
 import styled from "styled-components";
 import { ReactComponent as delate } from "../../assets/icons/trash.svg";
+import { ReactComponent as edit } from "../../assets/icons/edit.svg";
 import { ReactComponent as arrov } from "../../assets/icons/arrowpagination.svg";
 
 export const Group = styled.div`
   display: flex;
-  width: 1180px;
+  max-width: 1180px;
+  width: 100%;
   margin: auto;
+`;
+export const Flex = styled.div`
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
 export const Container = styled.div`
   display: flex;
@@ -14,13 +22,20 @@ export const Container = styled.div`
 `;
 export const Top = styled.div`
   width: 100%;
-  height: 180px;
+  height: 150px;
   padding: 60px;
+  @media (max-width: 700px) {
+    padding: 40px 10px;
+  }
 `;
 export const Bottom = styled.div`
-  max-width: 1500px;
+  max-width: 1120px;
+  min-width: 360px;
   height: 700px;
   margin: 60px;
+  @media (max-width: 700px) {
+   margin: 40px 10px;
+  }
   margin-top: 0;
   box-sizing: border-box;
   display: flex;
@@ -34,6 +49,8 @@ export const Bottom = styled.div`
 `;
 export const Title = styled.h1`
   display: flex;
+  align-items: center;
+  /* justify-content: center; */
   font-family: Cerebri Sans;
   font-style: normal;
   gap: 2px;
@@ -56,6 +73,10 @@ export const Image = styled.div`
   background-color: red;
   border-radius: 3px;
   margin-right: 20px;
+  @media (max-width: 700px) {
+    width: 91px !important;
+    height: 91px;
+  }
 `;
 export const TitleDiv = styled.div`
   display: flex;
@@ -76,7 +97,7 @@ export const Button = styled.div`
   align-items: center;
   justify-content: center;
   margin-left: 12px;
-  width: 71px;
+  width: 71px !important;
   height: 23px;
   background: #0d263b;
   border-radius: 3px;
@@ -86,9 +107,21 @@ export const Button = styled.div`
   color: white;
 `;
 
-export const Delate = styled.button`
+export const But = styled.div`
   margin-left: auto;
   margin-right: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  gap: 10px;
+  @media (max-width: 700px) {
+    margin-top: 30px;
+    margin-left: -70px;
+  }
+`;
+
+export const Buttons = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -99,6 +132,7 @@ export const Delate = styled.button`
   cursor: pointer;
   border-style: none;
 `;
+export const Edit = styled(edit)``;
 export const Trash = styled(delate)``;
 
 export const Pagination = styled.div`
