@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useMutation, useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
-import { Button as BT } from "../Generic";
+// import { Button as BT } from "../Generic";
 import {
   Bottom,
   Box,
@@ -72,11 +72,6 @@ const Favorites = () => {
       setPage(n);
     }
   };
-  console.log(currentPageIndex, "currentPageIndex");
-  console.log(
-    currentPageIndex?.map((val) => val?.attachments[0]),
-    "dsds"
-  );
   const { mutate } = useMutation(({ id }) => {
     return fetch(`${url}/v1/houses/${id}`, {
       method: "DELETE",
@@ -98,20 +93,21 @@ const Favorites = () => {
       }
     );
   };
+  console.log(currentPageIndex, "currentPageIndex");
   return (
     <Group>
       <Container>
         <Top>
           <Flex>
             <Title size={30}>My Proporties</Title>
-            <BT
+            {/* <BT
               onClick={() => navigate("/profile/add")}
               height={44}
               width={180}
               type={"primary"}
             >
               Add Propory
-            </BT>
+            </BT> */}
           </Flex>
         </Top>
         <Bottom>
@@ -155,7 +151,6 @@ const Favorites = () => {
                     </Buttons>
                     <Buttons>
                       <Trash onClick={() => onDelete(id)} />
-                      {/* {/* id berib yuborish kk  */}
                     </Buttons>
                   </But>
                 </Box>

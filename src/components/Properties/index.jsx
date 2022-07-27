@@ -44,6 +44,8 @@ const Properties = () => {
       },
     }
   );
+
+  
   useQuery(
     ["getHomeList", [search]],
     () => {
@@ -55,6 +57,7 @@ const Properties = () => {
       onSuccess: (res) => {
         // console.log(res?.data.map((val)=>val.category.name), "reslist");
         setData(res?.data || []);
+        console.log(res, 'resindata');
       },
     }
   );

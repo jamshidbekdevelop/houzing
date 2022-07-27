@@ -5,8 +5,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useHttp } from "../../hooks/useHttp";
 // import Input from "../Generic/Input";
 import { Card, Container, Title, Wrapper } from "./styled";
-import { Button } from "../Generic";
-import { Form, Input, InputNumber, Checkbox, SubmitButton } from "formik-antd";
+// import { Button } from "../Generic";
+import { Form, Input, SubmitButton } from "formik-antd";
 import { Formik } from "formik";
 const { REACT_APP_GoogleApiKey: key } = process.env;
 // const { REACT_APP_BASE_URL: url } = process.env;
@@ -18,7 +18,7 @@ const Addpropery = () => {
   const { request } = useHttp();
   const [map, setMap] = React.useState(null);
   useQuery(
-    "getSingle Items",
+    "getSinglesssds Items",
     () => {
       return id && request({ url: `/v1/houses/${id}`, token: true });
     },
@@ -29,7 +29,7 @@ const Addpropery = () => {
       },
     }
   );
-
+  console.log(data, "datasssssss");
   // google map
   const [center, setCenter] = useState({
     lat: 41.2995,
@@ -62,6 +62,7 @@ const Addpropery = () => {
       lng: e?.latLang?.lng(),
     });
   };
+
   // google map
 
   const { mutate } = useMutation((body) =>
@@ -70,59 +71,6 @@ const Addpropery = () => {
       method: "POST",
       token: true,
       body,
-      // body: {
-      //   address: "yangiyer",
-      //   attachments: [
-      //     {
-      //       imgPath:
-      //         "https://storage.kun.uz/source/6/VNjBGsNUcx4DOBe98cXku_lLKShmLYZV.jpg",
-      //     },
-      //   ],
-      //   categoryId: 1,
-      //   city: "uchqorgan",
-      //   componentsDto: {
-      //     additional: "string",
-      //     airCondition: true,
-      //     courtyard: true,
-      //     furniture: true,
-      //     gasStove: true,
-      //     internet: true,
-      //     tv: true,
-      //   },
-      //   country: "uzb",
-      //   description: "string",
-      //   favorite: true,
-      //   homeAmenitiesDto: {
-      //     additional: "string",
-      //     busStop: true,
-      //     garden: true,
-      //     market: true,
-      //     park: true,
-      //     parking: true,
-      //     school: true,
-      //     stadium: true,
-      //     subway: true,
-      //     superMarket: true,
-      //   },
-      //   houseDetails: {
-      //     area: 10,
-      //     bath: 10,
-      //     beds: 10,
-      //     garage: 10,
-      //     room: 10,
-      //     yearBuilt: 10,
-      //   },
-      //   locations: {
-      //     latitude: 0,
-      //     longitude: 0,
-      //   },
-      //   name: "string",
-      //   price: 0,
-      //   region: "string",
-      //   salePrice: 0,
-      //   status: true,
-      //   zipCode: "string",
-      // },
     })
   );
 
@@ -170,13 +118,14 @@ const Addpropery = () => {
   //   });
   // };
   const onSave = (value) => {
-    console.log(value, "data");
+    console.log(value, "datasxls");
+
     if (id) {
       console.log(id, "id");
       update(id, {
         onSuccess: (res) => {
-          console.log(res, "upd res");
-          console.log(res?.success, "success");
+          // console.log(res, "upd res");
+          // console.log(res?.success, "success");
           if (res?.success) {
             navigate("/properties/profile");
           }
@@ -193,26 +142,37 @@ const Addpropery = () => {
       });
     }
   };
-
+  console.log(data, "datala");
   return (
     <Formik
-      initialValues={ data }
+      initialValues={data}
       // onSubmit={{data}}
       enableReinitialize
-      render={() => (
+    >
+      {({ handleChange }) => (
         <Form>
           <Container>
-            <Card>  
+            <Card>
               <Title>Cantact Information</Title>
               <Wrapper>
                 <Input
                   name="address"
+                  // defaultValue={data}
+                  // onChange={handleChange}
                   height={44}
-                  placeholder={"Property title"}
+                  placeholder="Property title"
                 />
-                <Input name="category.name" height={44} placeholder={"Category"} />
+                <Input
+                  name="category.name"
+                  height={44}
+                  placeholder={"Category"}
+                />
               </Wrapper>
-              <Input name="description" height={44} placeholder={"Property Description"} />
+              <Input
+                name="description"
+                height={44}
+                placeholder={"Property Description"}
+              />
             </Card>
             <Card>
               <Title>Additional</Title>
@@ -237,23 +197,47 @@ const Addpropery = () => {
                 />
               </Wrapper>
               <Wrapper>
-                <Input name="houseDetails.yearBuilt" height={44} placeholder={"year build"} />
-                <Input name="houseDetails.area" height={44} placeholder={"home area"} />
-                <Input name="houseDetails.room" height={44} placeholder={"rooms"} />
+                <Input
+                  name="houseDetails.yearBuilt"
+                  height={44}
+                  placeholder={"year build"}
+                />
+                <Input
+                  name="houseDetails.area"
+                  height={44}
+                  placeholder={"home area"}
+                />
+                <Input
+                  name="houseDetails.room"
+                  height={44}
+                  placeholder={"rooms"}
+                />
               </Wrapper>
             </Card>
             <Card height={210}>
               <Title>Price</Title>
               <Wrapper>
                 <Input name="price" height={44} placeholder={"price"} />
-                <Input name="salePrice" height={44} placeholder={"sale price"} />
+                <Input
+                  name="salePrice"
+                  height={44}
+                  placeholder={"sale price"}
+                />
               </Wrapper>
             </Card>
             <Card height={810}>
               <Title>Location</Title>
               <Wrapper>
-                <Input height={44} placeholder={"Region"} />
-                <Input height={44} placeholder={"Address"} />
+                <Input
+                  name="locations.latitude"
+                  height={44}
+                  placeholder={"Region"}
+                />
+                <Input
+                  name="locations.longitude"
+                  height={44}
+                  placeholder={"Address"}
+                />
               </Wrapper>
               {isLoaded && (
                 <GoogleMap
@@ -273,7 +257,7 @@ const Addpropery = () => {
             </Card>
             <SubmitButton
               // onClick={onSubmit}
-              onClick={() => onSave( data )}
+              onClick={() => onSave(data)}
               mt={10}
               type={"primary"}
               width={150}
@@ -284,7 +268,7 @@ const Addpropery = () => {
           </Container>
         </Form>
       )}
-    />
+    </Formik>
   );
 };
 

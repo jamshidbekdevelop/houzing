@@ -14,20 +14,21 @@ const CardCarusel = () => {
   ];
 
   const [items, setItems] = useState([]);
-  console.log();
   useQuery(
-    ["getHomeList"],
+    ["getHomeListss"],
     () => {
       return fetch(`${url}/v1/houses/list`).then((res) => res.json());
     },
     {
       onSuccess: (res) => {
-        console.log(res?.data, 'res?.data');
         setItems(res?.data || []);
       },
     }
   );
-  console.log(items?.map((val)=>val), 'item');
+  console.log(
+    items?.map((val) => val),
+    "item"
+  );
   return (
     <div className="arr">
       <div className="title">Recommended</div>
@@ -39,8 +40,7 @@ const CardCarusel = () => {
         <Carousel breakPoints={breakPoints}>
           {items?.map((value) => (
             <Item key={value?.id}>
-              {console.log(value?.id, "value")}
-              {/* <Card key={value.id} info={value} /> */}
+              <Card info={value} />
             </Item>
           ))}
         </Carousel>
