@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import { Container, Description, Subtitle, Title, Wrapper } from "./style";
 import { useParams } from "react-router-dom";

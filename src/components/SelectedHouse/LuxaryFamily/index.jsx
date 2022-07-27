@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Features } from '../Features';
 import Map from '../Map'
 import Modal from '../Modal';
@@ -12,7 +12,6 @@ import { Container, Left, Right, Wrapper } from './style'
 
 export const LuxaryFamily = () => {
 
-    const [state, setState] = useState();
 
   return (
     <Container>
