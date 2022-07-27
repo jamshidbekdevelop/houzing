@@ -3,10 +3,10 @@ import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
 import { Container, Wrapper } from './style';
 
-import img1 from '../../assets/images/home1.png'
-import img2 from '../../assets/images/home2.png'
-import img3 from '../../assets/images/home1.png'
-import img4 from '../../assets/images/home1.png'
+// import img1 from '../../assets/images/home1.png'
+// import img2 from '../../assets/images/home2.png'
+// import img3 from '../../assets/images/home1.png'
+// import img4 from '../../assets/images/home1.png'
 import Images from './Images';
 import LuxaryFamily from './LuxaryFamily';
 import CardCarusel from '../Home/CardCarusel';
@@ -18,9 +18,9 @@ export const SelectedHouse = () => {
     const [state, setState] = useState();
     const { id } = useParams();
 
-    const [imgg, setImg] = [
-        img1, img2, img3, img4,
-    ]
+    // const [imgg, setImg] = [
+    //     img1, img2, img3, img4,
+    // ]
 
     useQuery(
         'get data', 

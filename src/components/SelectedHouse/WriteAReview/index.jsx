@@ -1,7 +1,5 @@
 import React from 'react'
 import {  Container, Desc,  Input,  Message,  Star, Title, Wrapper } from './style'
-import { Progress } from 'antd';
-import user from '../../../assets/images/user.png'
 import Button from '../../Generic/Button';
 
 export const WriteAReview = () => {

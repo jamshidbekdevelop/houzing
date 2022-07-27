@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Button from '../../Generic/Button';
 import { Checkbox, Container, Desc, Img, Input, Message, Title, Wrapper } from './style'
 import user from '../../../assets/images/user.png'
