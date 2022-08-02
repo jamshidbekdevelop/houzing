@@ -17,10 +17,14 @@ export const Img = styled.img`
   position: absolute;
   width: 100%;
   opacity: 0.5;
+  height: 100%;
 `;
 export const Icon = styled.div``;
 
 Icon.Left = styled(arrow)`
+  @media (max-width: 700px) {
+    display: none;
+  }
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,6 +49,9 @@ Icon.Left = styled(arrow)`
   }
 `;
 Icon.Right = styled(arrow)`
+  @media (max-width: 700px) {
+    display: none;
+  }
   position: absolute;
   display: flex;
   justify-content: center;
@@ -85,6 +92,9 @@ Box.Main = styled.div`
   align-items: center;
 `;
 export const Title = styled.div`
+  @media (max-width: 700px) {
+    font-size: ${({ size }) => (size ? `${size}px` : "30px")};
+  }
   font-family: "Montserrat";
   font-style: normal;
   font-weight: 700;

@@ -25,10 +25,6 @@ const CardCarusel = () => {
       },
     }
   );
-  console.log(
-    items?.map((val) => val),
-    "item"
-  );
   return (
     <div className="arr">
       <div className="title">Recommended</div>

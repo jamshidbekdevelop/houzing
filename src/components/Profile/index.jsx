@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useMutation, useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
-// import { Button as BT } from "../Generic";
+import { Button as BT } from "../Generic";
 import {
   Bottom,
   Box,
@@ -100,14 +100,14 @@ const Favorites = () => {
         <Top>
           <Flex>
             <Title size={30}>My Proporties</Title>
-            {/* <BT
+            <BT
               onClick={() => navigate("/profile/add")}
               height={44}
               width={180}
               type={"primary"}
             >
               Add Propory
-            </BT> */}
+            </BT>
           </Flex>
         </Top>
         <Bottom>

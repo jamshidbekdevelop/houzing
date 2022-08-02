@@ -44,7 +44,7 @@ export const SelectedHouse = () => {
     <Container>
         <Images />
         <LuxaryFamily  />
-        <CardCarusel/>
+        {/* <CardCarusel/> */}
         {/* <SimilarListing /> */}
     </Container>
   )

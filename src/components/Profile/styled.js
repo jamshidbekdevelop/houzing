@@ -34,7 +34,7 @@ export const Bottom = styled.div`
   height: 700px;
   margin: 60px;
   @media (max-width: 700px) {
-   margin: 40px 10px;
+    margin: 40px 10px;
   }
   margin-top: 0;
   box-sizing: border-box;
@@ -65,6 +65,9 @@ export const Box = styled.div`
   margin: 0px 30px;
   height: 200px;
   border-bottom: 1px solid #e6e9ec;
+  @media (max-width: 700px) {
+    margin: 0 10px;
+  }
 `;
 export const Image = styled.div`
   box-sizing: border-box;
@@ -92,12 +95,15 @@ Title.Const = styled.div`
   color: #696969;
 `;
 export const Button = styled.div`
+  @media (max-width: 700px) {
+    display: none;
+  }
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 12px;
-  width: 71px !important;
+  margin-left: 30px;
+  width: 71px;
   height: 23px;
   background: #0d263b;
   border-radius: 3px;
@@ -117,7 +123,6 @@ export const But = styled.div`
   gap: 10px;
   @media (max-width: 700px) {
     margin-top: 30px;
-    margin-left: -70px;
   }
 `;
 

@@ -29,7 +29,6 @@ export const Map = () => {
     }
   );
 
-  // console.log(state, 'aaaaaaaaaaaaaaa');
   const containerStyle = {
     width: "100%",
     height: "450px",

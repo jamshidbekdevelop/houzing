@@ -29,7 +29,7 @@ const Wrapper = styled.div`
     width: 100%;
     gap: 0px;
     flex-direction: column;
-    padding:0 150px;
+    padding:30px 150px;
   }
   @media (max-width: 770px) {
     padding: 0;
@@ -43,17 +43,14 @@ const Div = styled.div`
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
-    padding: 40px 0 20px 70px;
+    padding: 30px 0 20px 20px;
   }
 `;
 
 Wrapper.Column = styled.div`
   @media (max-width: 770px) {
     padding: 0;
-    margin-bottom: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    margin-bottom: 10px;
   }
 `;
 
@@ -82,7 +79,6 @@ const Section = styled.div`
     width: 100%;
     font-size: 13px;
     display: flex;
-    justify-content: center;
   }
 `;
 
@@ -108,6 +104,7 @@ const Socials = styled.div`
   margin-top: 42px;
   @media (max-width: 770px) {
     margin-top: 20px;
+    gap: 25px;
   }
 `;
 

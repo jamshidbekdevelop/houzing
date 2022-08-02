@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-margin: auto;
+  margin: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -33,4 +33,27 @@ export const Title = styled.div`
   font-size: 18px;
   line-height: 28px;
   color: #0d263b;
+`;
+export const CheckBox = styled.input.attrs({
+  type: "checkbox",
+})`
+  width: 18px;
+  height: 18px;
+`;
+export const Boxs = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  height: 200px;
+  gap: 20px;
+`;
+export const Text = styled.div`
+  display: flex;
+  gap: 15px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #696969;
 `;

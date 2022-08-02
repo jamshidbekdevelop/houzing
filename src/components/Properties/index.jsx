@@ -11,25 +11,21 @@ const { REACT_APP_BASE_URL: url } = process.env;
 
 const Properties = () => {
   const navigate = useNavigate();
-
-  const [title, setTitle] = useState('');
+  const [title, setTitle] = useState("");
   const [data, setData] = useState([]);
   const { search } = useLocation();
   const query = useSearch();
-  // console.log(query.get("category_id"));
-
   useEffect(() => {
     if (!query.get("category_id")) {
       setTitle("Properties");
     }
-  },[query.get("category_id")]);
+  }, [query.get("category_id")]);
   useQuery(
     "getHomeListdd",
     () => {
       return (
         query.get("category_id") &&
         fetch(`${url}/v1/categories/${query.get("category_id")}`, {
-          // fetch(`${url}/v1/categories/1`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -40,12 +36,11 @@ const Properties = () => {
     {
       onSuccess: (res) => {
         console.log(res?.data, "resfd");
-        query.get("category_id")&& setTitle(res?.data?.name || "Properties");
+        query.get("category_id") && setTitle(res?.data?.name || "Properties");
       },
     }
   );
 
-  
   useQuery(
     ["getHomeList", [search]],
     () => {
@@ -55,9 +50,8 @@ const Properties = () => {
     },
     {
       onSuccess: (res) => {
-        // console.log(res?.data.map((val)=>val.category.name), "reslist");
         setData(res?.data || []);
-        console.log(res, 'resindata');
+        console.log(res, "resindata");
       },
     }
   );
