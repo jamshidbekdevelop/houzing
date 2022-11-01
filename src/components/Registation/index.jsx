@@ -8,7 +8,6 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [lastname, setLastName] = useState("");
   const [firstname, setFirstName] = useState("");
-  // const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const { mutate } = useMutation((res) => {
@@ -27,7 +26,6 @@ const Register = () => {
     }).then((res) => res.json());
   });
   const onSubmit = () => {
-    console.log(email, password);
     mutate(
       {},
       {

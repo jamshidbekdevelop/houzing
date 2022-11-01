@@ -14,11 +14,8 @@ import {
   Title,
   Wrapper,
 } from "./styled";
-// import { Button } from "../Generic";
-// import { Form, SubmitButton } from "formik-antd";
 import { useFormik } from "formik";
 const { REACT_APP_GoogleApiKey: key } = process.env;
-// const { REACT_APP_BASE_URL: url } = process.env;
 
 const Addpropery = () => {
   const [data, setData] = useState({});
@@ -26,7 +23,6 @@ const Addpropery = () => {
   const { id } = useParams();
   const { request } = useHttp();
   const [map, setMap] = React.useState(null);
-  // const [checked, setChecked] = useState(false);
 
   useQuery(
     "getSinglesssds Items",
@@ -36,14 +32,9 @@ const Addpropery = () => {
     {
       onSuccess: (res) => {
         setData(res?.data);
-        console.log(res, "res");
       },
     }
   );
-
-  // console.log(data, "datasssssss");
-
-  // google map
   const [center, setCenter] = useState({
     lat: 41.2995,
     lng: 69.2401,
@@ -65,17 +56,13 @@ const Addpropery = () => {
     googleMapsApiKey: key,
   });
   const onMapClick = (e) => {
-    console.log(e?.latLang?.lat(), "lat");
-    console.log(e?.latLang?.lng(), "lng");
     setCenter({
       lat: e?.latLang?.lat(),
       lng: e?.latLang?.lng(),
     });
   };
-  // google map
 
-  const { mutate } = useMutation(
-    (value) =>
+  const { mutate } = useMutation((value) =>
     request({
       url: "/v1/houses",
       method: "POST",
@@ -120,12 +107,9 @@ const Addpropery = () => {
         zipCode: "string",
       },
     })
-    );
-    // console.log(body, 'body')
-
+  );
   const { mutate: update } = useMutation(
     ({ id, value }) =>
-      // return (
       id &&
       request({
         url: `/v1/houses/${id}`,
@@ -133,51 +117,13 @@ const Addpropery = () => {
         token: true,
         body: value,
       })
-    // );
   );
-
-  // const onSubmit = () => {
-  //   if (id) {
-  //     console.log(id, "id");
-  //     update(id, {
-  //       onSuccess: (res) => {
-  //         console.log(res, "upd res");
-  //         console.log(res?.success, "success");
-  //         if (res?.success) {
-  //           navigate("/properties/profile");
-  //         }
-  //       },
-  //     });
-  //   } else {
-  //     mutate("", {
-  //       onSuccess: (res) => {
-  //         console.log(res?.success, "success");
-  //         if (res?.success) {
-  //           navigate("/properties/profile");
-  //         }
-  //       },
-  //     });
-  //   }
-  // };
-
-  // const onChange = ({ target: { name, value } }) => {
-  //   setData({
-  //     ...data,
-  //     [name]: value,
-  //   });
-  // };
-
   const onSave = (value) => {
-    // console.log(value, "datasxls");
-
     if (id) {
-      // console.log(id, "id");
       update(
         { id, value },
         {
           onSuccess: (res) => {
-            // console.log(res, "upd res");
-            // console.log(res?.success, "success");
             if (res?.success) {
               navigate("/properties/profile");
             }
@@ -187,7 +133,6 @@ const Addpropery = () => {
     } else {
       mutate(value, {
         onSuccess: (res) => {
-          console.log(res?.success, "success");
           if (res?.success) {
             navigate("/properties/profile");
           }
@@ -196,83 +141,12 @@ const Addpropery = () => {
     }
   };
 
-  // console.log(setDatas, "datala");
-  // if (!data === null) {
-  //   var gg = data;
-  //   console.log(gg, "kerak");
-  // }
-  // console.log(data, "data");
-  // console.log(gg, "ghfhgjhgjkdsbfkj");
-
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: { data },
-    // initialValues: {
-    //   address: "string",
-    //   attachments: [
-    //     {
-    //       imgPath: "string",
-    //     },
-    //   ],
-    //   categoryId: 0,
-    //   city: "string",
-    //   componentsDto: {
-    //     additional: "string",
-    //     airCondition: true,
-    //     courtyard: true,
-    //     furniture: true,
-    //     gasStove: true,
-    //     internet: true,
-    //     tv: true,
-    //   },
-    //   country: "string",
-    //   description: "string",
-    //   homeAmenitiesDto: {
-    //     additional: "string",
-    //     busStop: true,
-    //     garden: true,
-    //     market: true,
-    //     park: true,
-    //     parking: true,
-    //     school: true,
-    //     stadium: true,
-    //     subway: true,
-    //     superMarket: true,
-    //   },
-    //   houseDetails: {
-    //     area: 0,
-    //     bath: 0,
-    //     beds: 0,
-    //     garage: 0,
-    //     room: 0,
-    //     yearBuilt: "string",
-    //   },
-    //   locations: {
-    //     latitude: 0,
-    //     longitude: 0,
-    //   },
-    //   name: "string",
-    //   price: 0,
-    //   region: "string",
-    //   salePrice: 0,
-    //   status: true,
-    //   zipCode: "string",
-    // },
-    onSubmit: (item) => {
-      console.log(item, "item");
-    },
+    onSubmit: (item) => {},
   });
-  console.log(formik.values.data, "formik");
-  // console.log(formik.values.componentsDto.airCondition, "sefds");
-  // setChecked(formik.values.componentsDto.airCondition)
   return (
-    // <Formik
-    //   initialValues={data}
-    //   // onSubmit={{data}}
-    //   enableReinitialize
-    // >
-    // {/* {({ handleChange }) => ( */}
-    //   {/* <Form> */}
     <Container onSubmit={formik.handleSubmit}>
       <Card>
         <Title>Cantact Information</Title>
@@ -281,8 +155,6 @@ const Addpropery = () => {
             id="data.address"
             name="data.address"
             type="text"
-            // defaultValue={data}
-            // onChange={handleChange}
             onChange={formik.handleChange}
             value={formik.values.data?.address || ""}
             height={44}
@@ -424,12 +296,7 @@ const Addpropery = () => {
         <Wrapper>
           <Boxs>
             <Text>
-              <CheckBox
-              // setChecked={formik.values.componentsDto.airCondition}
-              // checked={formik.values.data.componentsDto.airCondition}
-              // onChange={formik.handleChange}
-              // value={formik.values.componentsDto.airCondition}
-              />
+              <CheckBox />
               Air Conditions
             </Text>
             <Text>
@@ -517,10 +384,7 @@ const Addpropery = () => {
           </Boxs>
         </Wrapper>
       </Card>
-      {/* <button type="submit">Submit</button> */}
       <Button
-        // onClick={onSubmit}
-        // onClick={onSubmit}
         onClick={() => onSave(formik.values.data)}
         mt={10}
         type={"primary"}
@@ -530,9 +394,6 @@ const Addpropery = () => {
         Submit
       </Button>
     </Container>
-    //     </Form>
-    //   )}
-    // </Formik>
   );
 };
 

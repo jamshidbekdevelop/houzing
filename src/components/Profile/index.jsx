@@ -29,7 +29,7 @@ const Favorites = () => {
   let pattern = null;
   const [page, setPage] = useState(1);
   const [data, setData] = useState([]);
-  console.log(data, "data");
+  
   const { refetch } = useQuery(
     "getHomeList",
     () =>
@@ -43,7 +43,6 @@ const Favorites = () => {
 
     {
       onSuccess: (res) => {
-        console.log(res?.data, "me");
         setData(res?.data);
       },
     }
@@ -87,13 +86,11 @@ const Favorites = () => {
       { id },
       {
         onSuccess: (res) => {
-          console.log(res, "deleted");
           refetch();
         },
       }
     );
   };
-  console.log(currentPageIndex, "currentPageIndex");
   return (
     <Group>
       <Container>
@@ -163,7 +160,7 @@ const Favorites = () => {
             </Btn>
             {pattern?.map((label) => (
               <Btn key={label} onClick={() => changeNumber(label)}>
-                {label >= 0 ? label : 0}
+                {label >= 0 ? label : '...'}
               </Btn>
             ))}
             <Btn

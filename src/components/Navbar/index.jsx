@@ -18,7 +18,6 @@ import Footer from "../Footer";
 const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location, "loca");
   const gotoSignIn = () => {
     navigate("/signin");
   };
@@ -57,6 +56,7 @@ const Navbar = () => {
                 )
               );
             })}
+            {/* <button onClick={loc}></button> */}
           </NavbarBody>
           {location?.pathname !== "/register" ? (
             <Logo>

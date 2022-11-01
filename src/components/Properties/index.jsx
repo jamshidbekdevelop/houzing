@@ -16,10 +16,15 @@ const Properties = () => {
   const { search } = useLocation();
   const query = useSearch();
   useEffect(() => {
-    if (!query.get("category_id")) {
-      setTitle("Properties");
-    }
-  }, [query.get("category_id")]);
+    fetch(`${url}/v1/houses/list`)
+      .then((res) => res.json())
+      .then((res) => console.log(res));
+  });
+  // useEffect(() => {
+  //   if (!query.get("category_id")) {
+  //     setTitle("Properties");
+  //   }
+  // }, [query.get("category_id")]);
   useQuery(
     "getHomeListdd",
     () => {
@@ -35,7 +40,6 @@ const Properties = () => {
     },
     {
       onSuccess: (res) => {
-        console.log(res?.data, "resfd");
         query.get("category_id") && setTitle(res?.data?.name || "Properties");
       },
     }
@@ -51,15 +55,15 @@ const Properties = () => {
     {
       onSuccess: (res) => {
         setData(res?.data || []);
-        console.log(res, "resindata");
       },
     }
   );
   const onSelect = (id) => {
-    console.log(id, "id");
     navigate(`/properties/:${id}`);
   };
+  console.log(data)
   return (
+    
     <Container>
       <Filter />
       <Wrapper>

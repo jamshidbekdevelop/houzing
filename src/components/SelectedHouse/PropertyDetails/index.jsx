@@ -30,8 +30,6 @@ export const PropertyDetails = () => {
             refetchOnWindowFocus: false, // bu ham focus bolgan vaqti malumot olib kelish
     })
     
-    console.log(state, 'ssssssssssssssssssssss');
-
   return (
     <Container>
         <Title>Property Details</Title>

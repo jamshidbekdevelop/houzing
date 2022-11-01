@@ -14,8 +14,6 @@ import {
 
 import { Modal, Button } from "antd";
 import img1 from "../../../assets/images/home1.png";
-// import img2 from '../../../assets/images/home2.png'
-// import img3 from '../../../assets/images/house.png'
 
 export const Images = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);

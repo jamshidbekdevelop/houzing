@@ -1,6 +1,4 @@
 const { REACT_APP_BASE_URL } = process.env;
-// const { REACT_APP_BASE_URL: url } = process.env;
-
 export const useHttp = () => {
   const request = async ({
     url = "",
@@ -19,11 +17,9 @@ export const useHttp = () => {
       headers,
     }).then((res) => res.json());
     if (res?.success) {
-      console.log(res?.success, "suc");
       return res;
     } else {
       throw new Error(res?.message || "Something Wrong");
-      console.log(res?.message, "err");
     }
   };
   return { request };

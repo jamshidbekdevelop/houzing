@@ -24,30 +24,14 @@ const Filter = () => {
 
     {
       onSuccess: (res) => {
-        console.log(res?.data, "resBox");
         setBox(res?.data || []);
       },
     }
   );
-
-  // const {mutation}=useMutation(
-  //   "getHomeList",
-  //     () =>
-  //       fetch(`${url}/v1/categories/list`, {
-  //         method: "get",
-  //         headers: {
-  //           Authorization: `Bearer ${localStorage.getItem("token")}`,
-  //         },
-  //       }).then((res) => res.json()),
-  // )
-
   const onChange = ({ target }) => {
     const { value, name } = target;
     navigate(`${UseReplace(name, value)}`);
   };
-  console.log(box, "dsf");
-
-  // console.log(box?.data?.data?.map((val)=>val?.name), "data");
   const onSelect = ({ target }) => {
     navigate(`${UseReplace("category_id", target?.value)}`);
   };

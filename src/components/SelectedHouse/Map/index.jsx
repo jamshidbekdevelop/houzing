@@ -100,8 +100,6 @@ export const Map = () => {
           mapContainerStyle={containerStyle}
           center={center}
           zoom={15}
-          //   onLoad={onLoad}
-          //   onUnmount={onUnmount}
         >
           {state?.location?.latitude && state?.location?.longitude ? (
             <>

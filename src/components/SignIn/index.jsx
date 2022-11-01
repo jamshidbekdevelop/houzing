@@ -21,13 +21,11 @@ const SignIn = () => {
       body: JSON.stringify({
         email,
         password,
-        // roleIdSet: [0],
       }),
     }).then((res) => res.json());
   });
   const onSubmit = () => {
     if (email?.length && password?.length) {
-      console.log(email, password);
       mutate(
         {},
         {

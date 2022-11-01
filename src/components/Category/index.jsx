@@ -22,17 +22,13 @@ const Category = () => {
           return value;
         });
         setState(list);
-        console.log(list, "list");
       },
       refetchOnWindowFocus: false,
     }
   );
   const onSelect = (value) => {
-    console.log(value, "on select");
     navigate(`/properties?category_id=${value}`);
   };
-  console.log(state, "state");
-
   const breakPoints = [
     { width: 1, itemsToShow: 1 },
     { width: 520, itemsToShow: 2, itemsToScroll: 2 },
